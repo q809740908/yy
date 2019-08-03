@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+    <div>
+			<input type="text" id="uname" 
+			placeholder="请输入用户名">
+		</div>
+    <div>
+			<input type="password" id="upwd" placeholder="请输入密码">
+		</div>
+		<div>
+			<button onclick="login()">登陆</button>
+		</div>
+		<script>
+			function login(){
+				//获取用户名密码
+				var u_name=uname.value;
+				var u_pwd=upwd.value;
+				//1.创建xhr异步对象
+				var xhr=new XMLHttpRequest();
+				//4.监听获取响应数据
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var result=xhr.responseText;
+						alert(result);
+					}
+				}
+				//2.打开连接，创建请求
+				xhr.open("post","http://127.0.0.1:8080/pro/login",true);
+				//3.发送请求
+				//3.1创建请求主题
+				var formdata="uname="+u_name+"&upwd="+u_pwd;
+				//3.2设置请求消息头
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				xhr.send(formdata);
+			}
+		</script>
+ </body>
+</html>

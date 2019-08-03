@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+		<input type="text" id="uname" placeholder="请输入用户名"><br>
+		<input type="password" id="upwd" placeholder="请输入密码"><br>
+		<button onclick="login()">登录</button>
+		<div id="d1"></div>
+    <script>
+			function login(){
+				//使用dom获取两个input的value
+				var u_name=uname.value;
+				var u_pwd=upwd.value;
+				//1.创建异步对象
+				var xhr=new XMLHttpRequest();
+				console.log(xhr);
+				//4.监听接收响应数据
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var result=xhr.responseText;
+						d1.innerHTML=result;
+					}
+				}
+				//2.打开连接，创建请求
+				xhr.open("get","http://127.0.0.1:8080/ajax/ajaxDemo1?uname="+u_name+"&upwd="+u_pwd,true);
+				//3.发送请求
+				xhr.send();
+			}
+			
+		</script>
+ </body>
+</html>

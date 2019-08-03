@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body onload="loadUser()">
+    <table border="1px" width="800px">
+			<thead>
+				<th>登录名称</th>
+				<th>电子邮箱</th>
+				<th>联系方式</th>
+				<th>用户名称</th>
+				<th>用户性别</th>
+				<th>操作</th>
+			</thead>
+			<tbody id="content"></tbody>
+		</table>
+		<script>
+			//加载用户列表的方法
+			function	loadUser(){
+				//1.创建xhr异步对象
+				var xhr=new XMLHttpRequest();
+				//4.监听接收响应数据
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var result=xhr.responseText;
+						//json解析，得到js对象数组
+						var users=JSON.parse(result);
+						//dom操作，把数据放入表格
+						var html="";
+						//按行循环，一次循环是一行
+						for(var i=0;i<users.length;i++){
+							html+=`
+								<tr>
+									<td>${users[i].uname}</td>
+									<td>${users[i].email}</td>
+									<td>${users[i].phone}</td>
+									<td>${users[i].user_name}</td>
+									`;
+							//转换gender的表现方式 
+							var gender="不详";
+							if(users[i].gender==1){
+								gender="男";
+							}else if(users[i].gender==0){
+								gender="女";
+							}else{
+								gender="不详";
+							}
+							html+=`<td>${gender	}</td>
+									<td>
+										<a href='javascript:deleteUser(${users[i].uid})'>删除</a>
+										<a href='04_updateuser.html?uid=${users[i].uid}'>修改</a>
+									</td>
+								</tr>
+							`;
+						}
+						content.innerHTML=html;
+					}
+				}
+				//2.打开连接，创建请求
+				xhr.open("get","http://127.0.0.1:8080/pro/list",true);
+				//3.发送请求
+				xhr.send();
+			}
+			//删除用户的方法
+			function deleteUser(u_id){
+				//1.获取异步对象
+				var xhr=new XMLHttpRequest();
+				//4.接收响应数据
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var result=xhr.responseText;
+						console.log(result);
+						if(result==1){
+							alert("删除成功");
+							//调用方法，重新加载页面
+							loadUser();
+						}else{
+							alert("删除失败");
+						}
+					}
+				}
+				//2.创建请求
+				xhr.open("get","http://127.0.0.1:8080/pro/deleteUser?uid="+u_id,true);
+				//3.发送请求
+				xhr.send();
+				
+		}
+		</script>
+ </body>
+</html>

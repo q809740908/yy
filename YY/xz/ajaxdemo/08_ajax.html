@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+    <script>
+			//1.创建异步对象 16:05~16:20休息
+			var xhr=new XMLHttpRequest();
+			console.log(xhr);
+			//4.接收响应数据,开启监听器
+			xhr.onreadystatechange=function(){
+				//这个监听会被调用4次，第4次是我们需要的,使用if把第4次筛选出来
+				if(xhr.readyState==4&&xhr.status==200){
+					//只有在readystate为4，响应传输完整
+					//status是响应状态码，为200，是响应成功
+					var result=xhr.responseText;
+					console.log(result);
+				}
+			}
+			//2.创建请求,打开连接
+			xhr.open("get","http://127.0.0.1:8080/ajax/ajaxDemo",true);
+			//3.发送请求
+			xhr.send(null);
+			
+		</script>
+ </body>
+</html>

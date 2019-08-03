@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YY安全中心</title>
+    <link rel="stylesheet" href="./css/index3.css">  
+</head>
+<body>
+    <div id="a1">        
+         <!-- <img src="./img/img1/1.jfif" alt="">   -->
+            <h1>    
+                YY安全中心 
+            </h1>
+            <a href="">账号申诉</a>          
+    </div>
+    <div id="a2">  
+            <li id="t1">找回密码</li>     
+            <li id="t2">封号查询</li>
+            <li id="t3">解除封禁</li>
+            <li id="t4">手机注册</li>
+            <li id="t5">邮箱注册</li>
+            <li id="t6">帐号注册</li>        
+    </div>
+    <div id="a3">
+        <div class="b1 ">
+            <p>找回密码</p>
+            <div class="b2">
+                <p>请输入遇到问题的欢聚时代帐号 ,支持帐号、邮箱、手机号、YY号
+                </p>        
+                 <span>帐&nbsp;&nbsp;号:</span> 
+           
+            <input class='input1' type="text" placeholder="账号\邮箱\YY号\手机号"><br>
+                <span>验证码: </span>
+                <input class='input2'type="password" placeholder="请输入验证码"><br>
+                <button>下一步</button>
+            </div>
+        </div>
+        <div class="c1 hide">
+                <p>封号查询</p>
+                <div class="b2 ">
+                <p>请输入遇到问题的欢聚时代帐号 ,支持帐号、邮箱、手机号、YY号
+                </p>
+                <span>帐&nbsp;&nbsp;号:</span> <input class='input1' type="text" placeholder="账号\邮箱\YY号\手机号"><br>
+                <span>验证码: </span><input class='input2'type="password" placeholder="请输入验证码"><br>
+                <button>查询账号状态</button>
+            </div>
+        </div>
+        <div class="d1 hide">
+                <p>解除封禁</p>
+                <div class="b2">
+                <p>请输入遇到问题的欢聚时代帐号 ,支持帐号、邮箱、手机号、YY号
+                </p>
+                <span>帐&nbsp;&nbsp;号:</span> <input class='input1' type="text" placeholder="账号\邮箱\YY号\手机号"><br>
+                <span>验证码: </span><input class='input2'type="password" placeholder="请输入验证码"><br>
+                <button>下一步</button>
+            </div>
+        </div>
+        <div class="e1 hide">
+                <p>手机注册</p>
+            <div class="e2">
+                <span>手机号:</span> <input class='input1' type="text" placeholder="输入您的手机号" minlength="11" maxlength="11"><span></span><br>     
+                <span>密码:</span> <input class='input2' type="password" placeholder="设置你的登录密码" minlength="6" maxlength="12"><span></span><br>
+                <span>重置密码:</span> <input class='input3' type="password" placeholder="再次输入密码"  minlength="6" maxlength="12"><span></span><br>
+                <span>验证码: </span><input class='input4'type="password" placeholder="请输入验证码"><br>
+                <button onclick="reg()">同意并注册账号</button>
+            </div>
+        </div>
+        <div class="f1 hide">
+                <p>邮箱注册</p>
+                <div class="e3">
+                <span>邮箱:</span> <input class='input5' type="text" placeholder="输入您的邮箱地址"minlength="15" maxlength="15"><span></span><br>
+                <span>密码:</span> <input class='input6' type="password" placeholder="设置你的登录密码" minlength="6" maxlength="12"><span></span><br>
+                <span>重置密码:</span> <input class='input7' type="password" placeholder="再次输入密码" minlength="6" maxlength="12"><span></span><br>
+                <span>验证码: </span><input class='input8'type="password" placeholder="请输入验证码"><span></span><br>
+                <button>同意并注册账号</button>
+            </div>
+        </div>
+        <div class="g1 hide">
+                <p>帐号注册</p>
+                <div class="e4">
+                <span>帐号:</span> <input class='input9' type="text" placeholder="输入你想注册的帐号" minlength="6" maxlength="20"><span></span><br>
+                <span>密码:</span> <input class='input10' type="password" placeholder="设置你的登录密码" minlength="6" maxlength="12"><span></span><br>
+                <span>重置密码:</span> <input class='input11' type="password" placeholder="再次输入密码" minlength="6" maxlength="12"><span></span><br>
+                <span>验证码: </span><input class='input12'type="password" placeholder="请输入验证码"><span></span><br>
+                <button>同意并注册账号</button>
+            </div>
+        </div>
+    </div>
+	<script>	           
+            var a2=document.getElementById("a2")
+            var a3=document.getElementById("a3")
+            var n=0;
+            for(var i=0;i<a2.children.length;i++){
+                a2.children[i].onclick=function(){
+                for(var i=0;i<a2.children.length;i++){
+                    a2.children[i].className="";
+                }
+                   this.className="hover";
+                    for(var item of a3.children){
+                        item.className="hide";
+                    }
+                    if(this.id=="t1"){
+                        a3.children[0].className="b1"
+                    }
+                    if(this.id=="t2"){
+                        a3.children[1].className="c1"
+                    }
+                    if(this.id=="t3"){
+                        a3.children[2].className="d1"
+                    }
+                    if(this.id=="t4"){
+                        a3.children[3].className="e1"
+                    }
+                    if(this.id=="t5"){
+                        a3.children[4].className="f1"
+                    }
+                    if(this.id=="t6"){
+                        a3.children[5].className="g1"
+                    }
+                }
+            }  
+            </script>
+            <script src="../js/jquery-1.11.3.js"></script>	
+            <script>
+            (function(){
+                //验证手机号
+            $(".input1").blur(function(){
+                //调用验证函数，传入参数执行验证
+                vali(this,11,11,"&nbsp;手机号码由11位数字组成");
+                } )   
+                function vali(txt,minlen,maxlen,msg){
+                    var $txt=$(".input1");
+                    var $span=$txt.next();
+                    var value=$(txt).val().trim();
+                    if(value.length>=minlen&&value.length<=maxlen){
+                    $span.html("&nbsp;&nbsp;<img src='img/img4/1.png'>")
+                    } else if(value.length==""){
+                        $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请输入手机号')
+                     }else{
+                    $span.html("&nbsp;&nbsp;<img src='img/img4/3.png'>"+msg)
+                     }
+                    } 
+              //验证密码    
+              $(".input2").blur(function(){
+                //调用验证函数，传入参数执行验证
+                wee(this,6,12,"&nbsp;密码长度为8~12个字符");
+                } )   
+             function wee(txt,minlen,maxlen,msg){
+                 var $txt=$(".input2");
+                 
+                 var $span=$txt.next();
+                 var value1=$(txt).val().trim();
+                 console.log(value1)
+                 if(value1.length>=minlen&&value1.length<=maxlen){
+                        $span.html(`&nbsp;&nbsp;<img src='img/img4/1.png'>`)
+                    }else if(value1.length==""){
+                        $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请输入密码')
+                    }else{
+                        $span.html(`&nbsp;&nbsp;<img src='img/img4/3.png'>`+msg)
+                    }
+                }      
+              //验证重置密码 
+              $(".input3").blur(function(){
+                //调用验证函数，传入参数执行验证
+                qwe(this,6,12,"&nbsp;输入的密码不一致");
+                } )   
+             function qwe(txt,minlen,maxlen,msg){
+                 var $txt=$(".input3");
+                 var $span=$txt.next();
+                 var value2=$(txt).val().trim();
+                console.log(value2)
+                
+                 if(value2.length>=minlen&&value2.length<=maxlen){
+                         $span.html(`&nbsp;&nbsp;<img src='img/img4/1.png'>`)
+                 }else if(value2.length==""){
+                        $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请重新输入密码')
+                 }else{
+                        $span.html(`&nbsp;&nbsp;<img src='img/img4/3.png'>`+msg)
+                 }
+              }   
+
+
+        //验证邮箱地址
+        $(".input5").blur(function(){
+            //调用验证函数，传入参数执行验证
+            qaz(this,15,15,"&nbsp;邮箱地址由15位数字组成");
+            } )   
+            function qaz(txt,minlen,maxlen,msg){
+                var $txt=$(".input5");
+                var $span=$txt.next();
+                var value=$(txt).val().trim();
+                if(value.length>=minlen&&value.length<=maxlen){
+                $span.html("&nbsp;&nbsp;<img src='img/img4/1.png'>")
+                } else if(value.length==""){
+                    $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请输入邮箱地址')
+                 }else{
+                $span.html("&nbsp;&nbsp;<img src='img/img4/3.png'>"+msg)
+                 }
+                } 
+          //验证密码    
+          $(".input6").blur(function(){
+            //调用验证函数，传入参数执行验证
+            ert(this,6,12,"&nbsp;密码长度为8~12个字符");
+            } )   
+         function ert(txt,minlen,maxlen,msg){
+             var $txt=$(".input6");
+             var $span=$txt.next();
+             var value=$(txt).val().trim();
+             if(value.length>=minlen&&value.length<=maxlen){
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/1.png'>`)
+             }else if(value.length==""){
+                $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请输入密码')
+             }else{
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/3.png'>`+msg)
+             }
+          }      
+          //验证重置密码 
+          $(".input7").blur(function(){
+            //调用验证函数，传入参数执行验证
+            yui(this,6,12,"&nbsp;输入的密码不一致");
+            } )   
+         function yui(txt,minlen,maxlen,msg){
+             var $txt=$(".input7");
+             var $span=$txt.next();
+             var value=$(txt).val().trim();
+             if(value.length>=minlen&&value.length<=maxlen){
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/1.png'>`)
+             }else if(value.length==""){
+                $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请重新输入密码')
+             }else{
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/3.png'>`+msg)
+             }
+          }   
+
+
+        //验证帐号
+        $(".input9").blur(function(){
+            //调用验证函数，传入参数执行验证
+            dfg(this,6,20,"&nbsp;帐号由6~20位数字组成");
+            } )   
+            function dfg(txt,minlen,maxlen,msg){
+                var $txt=$(".input9");
+                var $span=$txt.next();
+                var value=$(txt).val().trim();
+                if(value.length>=minlen&&value.length<=maxlen){
+                $span.html("&nbsp;&nbsp;<img src='img/img4/1.png'>")
+                } else if(value.length==""){
+                    $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请输入帐号')
+                 }else{
+                $span.html("&nbsp;&nbsp;<img src='img/img4/3.png'>"+msg)
+                 }
+                } 
+          //验证密码    
+          $(".input10").blur(function(){
+            //调用验证函数，传入参数执行验证
+            you(this,6,12,"&nbsp;密码长度为8~12个字符");
+            } )   
+         function you(txt,minlen,maxlen,msg){
+             var $txt=$(".input10");
+             var $span=$txt.next();
+             var value=$(txt).val().trim();
+             if(value.length>=minlen&&value.length<=maxlen){
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/1.png'>`)
+             }else if(value.length==""){
+                $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请输入密码')
+             }else{
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/3.png'>`+msg)
+             }
+          }      
+          //验证重置密码 
+          $(".input11").blur(function(){
+            //调用验证函数，传入参数执行验证
+            hjk(this,6,12,"&nbsp;输入的密码不一致");
+            } )   
+         function hjk(txt,minlen,maxlen,msg){
+             var $txt=$(".input11");
+             var $span=$txt.next();
+             var value=$(txt).val().trim();
+             if(value.length>=minlen&&value.length<=maxlen){
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/1.png'>`)
+             }else if(value.length==""){
+                $span.html(`&nbsp;&nbsp;<img src='img/img4/2.png'>`+'&nbsp;请重新输入密码')
+             }else{
+             $span.html(`&nbsp;&nbsp;<img src='img/img4/3.png'>`+msg)
+             }
+          }                
+            }())    
+            
+        </script>
+        <script>    
+            function reg(){
+                //获取手机号密码
+                var uname=document.getElementsByClassName("input1");
+                    uname=uname.value;
+                var upwd=document.getElementsByClassName("input2");
+                    upwd=upwd.value;
+                //1.创建xhr异步对象
+                var xhr=new XMLHttpRequest();
+                //4.监听获取响应数据
+                xhr.onreadystatechange=function(){
+                //这个监听会被调用4次，第4次是我们需要的,使用if把第4次筛选出来
+                    if(xhr.readyState==4&&xhr.status==200){
+                        //只有在readystate为4，响应传输完整
+                        //status是响应状态码，为200，是响应成功
+                        var result=JSON.parse(xhr.responseText);
+                        console.log(result);
+                    }
+                }
+                //2.打开连接，创建请求
+                xhr.open("get","http://127.0.0.1:3000/reg?uname="+uname+"&upwd="+upwd,true);
+                //3.发送请求
+                xhr.send(null);
+            }
+        </script>
+</body>
+</html>

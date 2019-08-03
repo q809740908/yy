@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body onload="query()">
+    <p>
+			用户ID：<span id="uid"></span>
+		</p>
+		<p>
+			登录名称:<input type="text" id="uname">
+		</p>
+		<p>
+			登录密码:<input type="text" id="upwd">
+		</p>
+		<p>
+			用户邮箱:<input type="text" id="email">
+		</p>
+		<p>
+			联系方式:<input type="text" id="phone">
+		</p>
+		<p>
+			真实姓名:<input type="text" id="user_name">
+		</p>
+		<p>
+			用户性别：
+			<input type="radio" name="gender" id="m" value="1">
+			<label for="m">男</label>
+			<input type="radio" name="gender" id="f" value="0">
+			<label for="f">女</label>
+			<input type="radio" name="gender" id="un" value="-1">
+			<label for="un">保密</label>
+		</p>
+		<button onclick="update()">修改</button>
+		<script>
+			//修改用户信息的方法
+			function update(){
+				//获取所有的信息
+				var u_id=uid.innerHTML;
+				var u_name=uname.value;
+				var u_pwd=upwd.value;
+				var u_email=email.value;
+				var u_phone=phone.value;
+				var u_user_name=user_name.value;
+				var u_gender="1";
+				if(m.checked){
+					u_gender="1";
+				}else{
+					u_gender="0";
+				}
+				//1.创建xhr异步对象
+				var xhr=new XMLHttpRequest();
+				//4.接收响应
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var result=xhr.responseText;
+						//1.提示修改结构
+						if(result==1){
+							alert("修改成功");
+							//js的页面跳转，BOM
+							location.href="http://127.0.0.1:8080/02_list.html";
+						}else{
+							alert("修改失败");
+						}
+					}
+				}
+				//2.创建请求
+				xhr.open("post","http://127.0.0.1:8080/pro/update",true);
+				//3.发送请求
+				  //3.1设置请求头信息
+					xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+					//3.2创建请求主体
+					var formdata="uid="+u_id+"&uname="+u_name+"&upwd="+u_pwd+"&email="+u_email+"&phone="+u_phone+"&user_name="+u_user_name+"&gender="+u_gender;
+					xhr.send(formdata);
+			}
+			function query(){
+				//从url中获取要查询的uid
+				var urlParams=new URLSearchParams(location.search);
+				var in_uid=urlParams.get("uid");
+				//1.创建xhr异步对象
+				var xhr=new XMLHttpRequest();
+				//4.监听获取响应数据
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4&&xhr.status==200){
+						var result=xhr.responseText;
+						//json解析
+						var user=JSON.parse(result);
+						uid.innerHTML=user.uid;
+						uname.value=user.uname;
+						upwd.value=user.upwd;
+						email.value=user.email;
+						phone.value=user.phone;
+						user_name.value=user.user_name;
+						//获取性别
+						console.log(user.gender);
+						if(user.gender==1){
+							m.checked=true;
+						}else if(user.gender==0){
+							console.log(1111111111);
+						  f.checked=true;
+						}else{
+							un.checked=true;
+						}
+					}
+				}
+				//2.创建请求
+				xhr.open("get","http://127.0.0.1:8080/pro/query?uid="+in_uid,true);
+				//3.发送请求
+				xhr.send();
+			}
+		</script>
+ </body>
+</html>
